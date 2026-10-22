@@ -1,4 +1,3 @@
-
 name: Build Android APK
 
 on:
@@ -25,18 +24,6 @@ jobs:
         with:
           gradle-version: "8.13"
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Accept Android SDK licenses
-        run: |
-          set +e
-          if command -v sdkmanager >/dev/null 2>&1; then
-            yes | sdkmanager --licenses
-          elif [ -f "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" ]; then
-            yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses
-          fi
-
       - name: Move project files to repository root
         run: |
           if [ -d ".github/workflows/app" ] && [ ! -d "./app" ]; then
@@ -48,6 +35,22 @@ jobs:
             fi
           done
           ls -la
+
+      - name: Prepare Android SDK (best effort, never fails)
+        run: |
+          set +e
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          SDKM=""
+          if [ -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" ]; then
+            SDKM="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          elif command -v sdkmanager >/dev/null 2>&1; then
+            SDKM="sdkmanager"
+          fi
+          if [ -n "$SDKM" ]; then
+            yes 2>/dev/null | "$SDKM" --licenses >/dev/null 2>&1
+            "$SDKM" "platforms;android-36" "build-tools;36.0.0" >/dev/null 2>&1
+          fi
+          exit 0
 
       - name: Generate Gradle wrapper and build APK
         run: |
