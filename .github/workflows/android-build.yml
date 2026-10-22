@@ -1,3 +1,4 @@
+
 name: Build Android APK
 
 on:
@@ -22,7 +23,7 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: 8.13.0
+          gradle-version: "8.13"
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
@@ -36,9 +37,21 @@ jobs:
             yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses
           fi
 
+      - name: Move project files to repository root
+        run: |
+          if [ -d ".github/workflows/app" ] && [ ! -d "./app" ]; then
+            mv ".github/workflows/app" "./app"
+          fi
+          for f in settings.gradle.kts build.gradle.kts gradle.properties; do
+            if [ -f ".github/workflows/$f" ] && [ ! -f "./$f" ]; then
+              mv ".github/workflows/$f" "./$f"
+            fi
+          done
+          ls -la
+
       - name: Generate Gradle wrapper and build APK
         run: |
-          gradle wrapper --gradle-version 8.13.0 --distribution-type bin
+          gradle wrapper --gradle-version 8.13 --distribution-type bin
           chmod +x gradlew
           ./gradlew assembleDebug --no-daemon --stacktrace
 
