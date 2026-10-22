@@ -1,1 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B0F14">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quiz Solver Overlay"
+            android:textColor="#00FF88"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Enter up to 8 Gemini API keys. Keys can start with AIza or AQ."
+            android:textColor="#9FB4C6"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/key1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Gemini API Key 1"
+            android:inputType="textVisiblePassword|textNoSuggestions"
+            android:textColor="#E6FFF4"
+            android:textColorHint="#5F7280" />
+
+        <EditText
+            android:id="@+id/key2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Gemini API Key 2"
+            android:inputType="textVisiblePassword|textNoSuggestions"
+            android:textColor="#E6FFF4"
+            android:textColorHint="#5F7280" />
+
+        <EditText
+            android:id="@+id/key3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Gemini API Key 3"
+            android:inputType="textVisiblePassword|textNoSuggestions"
+            android:textColor="#E6FFF4"
+            android:textColorHint="#5F7280" />
+
+        <EditText
+            android:id="@+id/key4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Gemini API Key 4"
+            android:inputType="textVisiblePassword|textNoSuggestions"
+            android:textColor="#E6FFF4"
+            android:textColorHint="#5F7280" />
+
+        <EditText
+            android:id="@+id/key5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Gemini API Key 5"
+            android:inputType="textVisiblePassword|textNoSuggestions"
+            android:textColor="#E6FFF4"
+            android:textColorHint="#5F7280" />
+
+        <EditText
+            android:id="@+id/key6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Gemini API Key 6"
+            android:inputType="textVisiblePassword|textNoSuggestions"
+            android:textColor="#E6FFF4"
+            android:textColorHint="#5F7280" />
+
+        <EditText
+            android:id="@+id/key7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Gemini API Key 7"
+            android:inputType="textVisiblePassword|textNoSuggestions"
+            android:textColor="#E6FFF4"
+            android:textColorHint="#5F7280" />
+
+        <EditText
+            android:id="@+id/key8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Gemini API Key 8"
+            android:inputType="textVisiblePassword|textNoSuggestions"
+            android:textColor="#E6FFF4"
+            android:textColorHint="#5F7280" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Overlay opacity"
+            android:textColor="#9FB4C6"
+            android:textSize="14sp" />
+
+        <SeekBar
+            android:id="@+id/opacitySeek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:max="100"
+            android:progress="85" />
+
+        <TextView
+            android:id="@+id/opacityLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="85%"
+            android:textColor="#00FF88"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Start Overlay"
+            android:textColor="#001810"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/stopButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Stop Overlay"
+            android:textColor="#FFEDED"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="After tapping Start Overlay: grant overlay permission, allow notifications if requested, then accept the Android screen capture prompt. Android 16 requires the capture prompt every time."
+            android:textColor="#7C8B9A"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</ScrollView>
